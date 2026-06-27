@@ -1,0 +1,13 @@
+[Unit]
+Description=SuperLauncher Git Auto-Sync
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart="/home/artem/Downloads/SuperLauncher 2.0 Linux/git-auto-sync.sh"
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
