@@ -8,12 +8,13 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QPixmap, QIcon, QCursor
+from ...core.platform import PlatformSupport
 
 class ModsPage(QWidget):
     def __init__(self, main):
         super().__init__()
         self.main = main
-        self.mods_dir = os.path.join(os.getenv('APPDATA'), '.minecraft', 'mods')
+        self.mods_dir = os.path.join(PlatformSupport.get_minecraft_path(), 'mods')
         os.makedirs(self.mods_dir, exist_ok=True)
 
         layout = QVBoxLayout(self)
