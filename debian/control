@@ -1,0 +1,56 @@
+Source: superlauncher
+Section: games
+Priority: optional
+Maintainer: SuperLauncher Team <team@superlauncher.example.com>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-all,
+               python3-setuptools,
+               python3-build,
+               python3-installer,
+               python3-wheel,
+               cmake,
+               g++,
+               qt6-base-dev,
+               qt6-base-dev-tools
+Standards-Version: 4.6.2
+Homepage: https://github.com/superlauncher/superlauncher
+Rules-Requires-Root: no
+
+Package: superlauncher
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         python3-pyqt6,
+         python3-requests,
+         python3-packaging,
+         python3-pil,
+         python3-tqdm
+Recommends: python3-pypresence,
+            python3-cryptography,
+            python3-psutil,
+            python3-minecraft-launcher-lib,
+            openjdk-17-jre | openjdk-21-jre
+Suggests: superlauncher-cpp
+Description: Minecraft launcher with mod support and server management
+ SuperLauncher is a modern Minecraft launcher with:
+  * Mod installation from Modrinth and CurseForge
+  * Local server creation and management
+  * Instance management for multiple profiles
+  * Built-in skin system
+  * Discord Rich Presence integration
+  * Modern glass-morphism UI
+ .
+ This package contains the Python edition.
+
+Package: superlauncher-cpp
+Architecture: amd64 arm64
+Build-Profiles: <!stage1>
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libqt6widgets6,
+         libqt6network6,
+         libqt6multimedia6
+Description: SuperLauncher C++ native edition
+ Native C++ build of the SuperLauncher Minecraft launcher.
+ Built with Qt6 for maximum performance.

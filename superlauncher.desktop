@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SuperLauncher
+Comment=Minecraft launcher with mod support and server management
+Comment[ru]=Лаунчер Minecraft с поддержкой модов и управлением серверами
+Exec=superlauncher
+Icon=superlauncher
+Terminal=false
+Categories=Game;Utility;
+Keywords=minecraft;launcher;mods;

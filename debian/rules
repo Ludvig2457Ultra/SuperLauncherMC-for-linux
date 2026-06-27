@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+%:
+	dh $@ --with python3
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf build-cpp
+
+override_dh_auto_build:
+	# Build Python package
+	python3 -m build --wheel --no-isolation
+
+	# Build C++ component (for superlauncher-cpp)
+	mkdir -p build-cpp
+	cd build-cpp && cmake ../SuperLauncherCpp \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib/$(DEB_HOST_MULTIARCH)
+	cd build-cpp && make -j$$(nproc)
+
+override_dh_auto_install:
+	# Install Python package
+	python3 -m installer --destdir=debian/superlauncher dist/*.whl
+
+	# Install C++ binary
+	install -Dm755 build-cpp/SuperLauncher \
+		debian/superlauncher-cpp/usr/bin/superlauncher-cpp
+
+override_dh_install:
+	# Install desktop file and icon
+	install -Dm644 debian/superlauncher.desktop \
+		debian/superlauncher/usr/share/applications/superlauncher.desktop
+	install -Dm644 assets/icon.png \
+		debian/superlauncher/usr/share/icons/hicolor/256x256/apps/superlauncher.png
