@@ -30,7 +30,9 @@ REQ="$DIR/requirements.txt"
 if [ ! -f "$VENV/bin/python3" ]; then
     echo "Creating venv and installing dependencies..."
     python3 -m venv "$VENV"
-    "$VENV/bin/pip" install -r "$REQ" --quiet
+    "$VENV/bin/python3" -m ensurepip --upgrade --quiet 2>/dev/null || true
+    "$VENV/bin/pip" install -r "$REQ" --quiet 2>/dev/null || \
+        "$VENV/bin/python3" -m pip install -r "$REQ" --quiet
 fi
 
 exec "$VENV/bin/python3" "$SCRIPT" "$@"
