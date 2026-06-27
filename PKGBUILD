@@ -7,7 +7,7 @@ pkgdesc="Minecraft launcher with mod support and server management"
 arch=('any')
 url="https://github.com/Ludvig2457Ultra/SuperLauncherMC-for-linux"
 license=('GPL3')
-depends=('python' 'python-pyqt6' 'python-pip')
+depends=('python' 'python-pyqt6')
 source=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
