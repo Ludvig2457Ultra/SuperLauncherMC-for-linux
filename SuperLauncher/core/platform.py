@@ -11,7 +11,10 @@ class PlatformSupport:
         if system == "Darwin":
             return os.path.expanduser("~/Library/Application Support/minecraft")
         elif system == "Windows":
-            return os.path.join(os.getenv('APPDATA'), '.minecraft')
+            appdata = os.getenv('APPDATA')
+            if appdata:
+                return os.path.join(appdata, '.minecraft')
+            return os.path.expanduser("~/.minecraft")
         return os.path.expanduser("~/.minecraft")
 
     @staticmethod
