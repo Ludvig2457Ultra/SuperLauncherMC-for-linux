@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>lang/ru.json</file>
-        <file>lang/en.json</file>
-    </qresource>
-</RCC>
