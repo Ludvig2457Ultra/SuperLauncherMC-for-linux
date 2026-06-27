@@ -12,9 +12,8 @@ depends=(
     'python-pyqt6'
     'python-requests'
     'python-pillow'
+    'python-pypresence'
 )
-optdepends=(
-    'python-pypresence: Discord Rich Presence'
     'python-cryptography: encrypted storage'
     'python-psutil: system resource monitoring'
     'python-pyjwt: JWT authentication'
