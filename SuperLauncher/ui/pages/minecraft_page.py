@@ -7,12 +7,13 @@ from uuid import uuid1
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit,
                               QComboBox, QProgressBar, QSpacerItem, QSizePolicy, QMessageBox)
 from PyQt6.QtCore import Qt
+from ...core.platform import PlatformSupport
 
 class MinecraftPage(QWidget):
     def __init__(self, main):
         super().__init__()
         self.main = main
-        self.mc_dir = os.path.join(os.getenv('APPDATA'), '.minecraft')
+        self.mc_dir = PlatformSupport.get_minecraft_path()
         layout = QVBoxLayout(self)
         layout.setContentsMargins(15, 15, 15, 15)
 

@@ -5,12 +5,13 @@ from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushBut
                               QLineEdit, QComboBox, QListWidget, QMessageBox, QFileDialog)
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QCursor
+from ...core.platform import PlatformSupport
 
 class BuildsPage(QWidget):
     def __init__(self, main):
         super().__init__()
         self.main = main
-        self.mc_dir = os.path.join(os.getenv('APPDATA'), '.minecraft')
+        self.mc_dir = PlatformSupport.get_minecraft_path()
         layout = QVBoxLayout(self)
         layout.setContentsMargins(15, 15, 15, 15)
 
